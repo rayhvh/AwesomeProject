@@ -36,7 +36,7 @@ export default class Hello extends React.Component {
             }
         }
     }
-    var watchID
+
 
     componentDidMount(){
         navigator.geolocation.getCurrentPosition((position) => {
@@ -52,7 +52,7 @@ export default class Hello extends React.Component {
 
             this.setState({initialPosition: initialRegion})
             this.setState({markerPosition: initialRegion})
-        },(error) => alert(JSON.stringify(error)), {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000})
+        },(error) => alert(JSON.stringify(error)), {enableHighAccuracy: true, timeout: 20000, maximumAge: 2500})
 
         this.watchID = navigator.geolocation.watchPosition((position) => {
             var lat = parseFloat(position.coords.latitude)
@@ -67,7 +67,7 @@ export default class Hello extends React.Component {
 
             this.setState({initialPosition: lastRegion})
             this.setState({markerPosition: lastRegion})
-        })
+        },(error) => alert(JSON.stringify(error)), {enableHighAccuracy: true})
     }
 
     compomentWillUnmount(){
